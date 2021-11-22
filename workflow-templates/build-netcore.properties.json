@@ -1,0 +1,8 @@
+{
+  "name": "Build .Net",
+  "description": "Workflow template for building .Net image.",
+  "iconName": "NET_Core_Logo",
+  "categories": [
+      "C#"
+  ]
+}
