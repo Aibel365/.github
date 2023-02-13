@@ -34,4 +34,4 @@ jobs:
 
       # This step will push the build artifact from above step to Azure Artifact Feed
       - name: publish package
-        run: twine upload -u <username> -p ${{ secrets.PERSONAL_ACCESS_TOKEN }} --repository-url <Azure-Artifact-Feed-URL> package-name
+        run: twine upload -u <username> -p ${{ secrets.PERSONAL_ACCESS_TOKEN }} --repository-url https://dev.azure.com/AibelDevelopmentPlatform/ADP/_artifacts/feed/AibelDevelopmentPlatform/pypi/upload package-name
