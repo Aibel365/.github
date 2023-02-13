@@ -2,5 +2,5 @@
     "name": "Create Python Package",
     "description": "Build a Python project, create a distributable package and publish to Azure Artifact Feed",
     "iconName": "python",
-    "categories": ["Continuous integration", "Python"]
+    "categories": ["Continuous integration", "python", "Build Python Package", "package python"]
   }
