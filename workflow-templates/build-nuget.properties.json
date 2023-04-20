@@ -1,6 +1,6 @@
 {
     "name": "Create Nuget Package",
     "description": "Build a C# project, create a nuget package and publish to github packages",
-    "iconName": "csharp",
+    "iconName": "dotnet",
     "categories": ["Continuous integration", "C#", "Visual Basic", ".NET"]
   }
