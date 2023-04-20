@@ -1,5 +1,9 @@
 # This is workflow to check vulnerablities in your python source code
 name: Sample workflow of using Snyk for python application
+on:
+  push:
+    branches:
+      - master  
 
 jobs:
   security:
