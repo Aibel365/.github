@@ -1,5 +1,5 @@
-# This is workflow to check vulnerablities in your python source code
-name: Sample workflow of using Snyk for python application
+# This is workflow to check vulnerablities in your python source code. This Action is based on the Snyk CLI
+name: Snyk for Python application
 on:
   push:
     branches:
@@ -12,7 +12,8 @@ jobs:
       - name: checkout source code
         uses: actions/checkout@master
       
+      # Github action for running snyk to check vulnerabilities in your code
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} # This is where you will need to introduce the Snyk API token created with your Snyk account

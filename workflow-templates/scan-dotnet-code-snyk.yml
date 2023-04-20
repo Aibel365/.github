@@ -1,21 +1,23 @@
-# This is workflow to check vulnerablities in your dotnet source code
-name: Scan dotNet code
+# This is workflow to check vulnerablities in your dotnet source code. This Action is based on the Snyk CLI
+name: Snyk for DotNet code
 on:
   push:
     branches:
       - master
-      
+
 jobs:
   security:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       
+      # Install snyk for scanning and where you will need to introduce the Snyk API token created with your Snyk account
       - name: Install Snyk & Authenticate
         run: |
           sudo npm install -g snyk
           snyk auth ${{ secrets.SNYK_TOKEN }}
-      # Run Snyk Code
+      
+      # Run Snyk Code command
       - name: Run Snyk Code
         run: |
           snyk code test
