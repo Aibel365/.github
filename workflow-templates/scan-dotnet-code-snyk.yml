@@ -1,6 +1,10 @@
 # This is workflow to check vulnerablities in your dotnet source code
 name: Scan dotNet code
-
+on:
+  push:
+    branches:
+      - master
+      
 jobs:
   security:
     runs-on: ubuntu-latest
