@@ -1,0 +1,6 @@
+{
+    "name": "Scan Python Code",
+    "description": "Scan the Python Code",
+    "iconName": "python",
+    "categories": ["Scan Vulnerabilities", "python", "Snyk Integration"]
+  }

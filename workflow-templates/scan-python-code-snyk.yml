@@ -1,0 +1,14 @@
+# This is workflow to check vulnerablities in your python source code
+name: Sample workflow of using Snyk for python application
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout source code
+        uses: actions/checkout@master
+      
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/python@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
