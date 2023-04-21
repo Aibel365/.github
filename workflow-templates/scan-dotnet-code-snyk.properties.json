@@ -1,6 +1,0 @@
-{
-    "name": "Scan DotNet Code with Snyk",
-    "description": "Scan the DotNet Code",
-    "iconName": "dotnet",
-    "categories": ["Scan Vulnerabilities", "dotnet", "Snyk Integration for DotNet"]
-  }
