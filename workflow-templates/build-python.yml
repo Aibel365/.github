@@ -22,6 +22,10 @@ jobs:
       # If you want to check which python version is installed on buiød server you can use below step
       - name: Python Version
         run: python -V
+
+      # This step will do linting 
+      - name: flake8 Lint
+        uses: py-actions/flake8@v2
       
       # This step will download all the dependencies mentioned in requirements.txt file which will be needed for build and required by your project
       # Include mentioned dependencies in requirements.txt - pip,build,setuptools,wheel,twin and additional as per your project's need
@@ -35,3 +39,5 @@ jobs:
       # This step will push the build artifact from above step to Azure Artifact Feed
       - name: publish package
         run: twine upload -u <username> -p ${{ secrets.PERSONAL_ACCESS_TOKEN }} --repository-url https://dev.azure.com/AibelDevelopmentPlatform/ADP/_artifacts/feed/AibelDevelopmentPlatform/pypi/upload package-name
+
+     
