@@ -23,9 +23,16 @@ jobs:
       - name: Python Version
         run: python -V
 
-      # This step will do linting 
-      - name: flake8 Lint
-        uses: py-actions/flake8@v2
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pylint
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
+        # This step will do linting using pylint and provide the correct path of scripts if other than src
+      - name: Lint with pylint
+        run: |
+          pylint src
       
       # This step will download all the dependencies mentioned in requirements.txt file which will be needed for build and required by your project
       # Include mentioned dependencies in requirements.txt - pip,build,setuptools,wheel,twin and additional as per your project's need
