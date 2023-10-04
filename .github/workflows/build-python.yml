@@ -1,0 +1,49 @@
+name: Build and Push a distributable python package to Azure Artifacts
+on:
+  push:
+    branches:
+      - master  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # if you want to use windows machine use windows-latest for linux machine).
+
+    
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # This step make sure that python is installed on the build server
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'  # you can mention the version of python which you want
+
+      # If you want to check which python version is installed on buiød server you can use below step
+      - name: Python Version
+        run: python -V
+
+      # This step will do linting 
+      - name: flake8 Lint
+        uses: py-actions/flake8@v2
+      
+      # This step will download all the dependencies mentioned in requirements.txt file which will be needed for build and required by your project
+      # Include mentioned dependencies in requirements.txt - pip,build,setuptools,wheel,twin and additional as per your project's need
+      - name: install python dependencies
+        run: pip install -r requirements.txt
+
+       # This step will test you code and generate a report
+      - name: Test with pytest
+        run: |
+          pip install pytest pytest-cov
+          pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+
+      # This step will create a distributable python package
+      - name: Build package
+        run: python -m build
+
+      # This step will push the build artifact from above step to Azure Artifact Feed
+      - name: publish package
+        run: twine upload -u <username> -p ${{ secrets.PERSONAL_ACCESS_TOKEN }} --repository-url https://dev.azure.com/AibelDevelopmentPlatform/ADP/_artifacts/feed/AibelDevelopmentPlatform/pypi/upload package-name
+
+     
